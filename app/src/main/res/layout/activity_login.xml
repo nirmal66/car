@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
+
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+
+        >
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/login_logo" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="fill_parent"
+        android:layout_height="320dp"
+        android:layout_below="@+id/rl1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="LOGIN"
+            android:textColor="@android:color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/usename"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tv1"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_bottom_border"
+            android:hint="User Name" />
+
+        <ImageView
+            android:id="@+id/userlogo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignEnd="@+id/usename"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/username">
+
+        </ImageView>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/usename"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/edit_text_bottom_border"
+            android:hint="Password" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignEnd="@+id/password"
+            android:layout_below="@+id/userlogo"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/password">
+
+        </ImageView>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/password"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:text="  Owner"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:checked="false"
+                android:text="  User"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/img_signIn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/radioGroup"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/sign_in">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/txt_Forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget your password?"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/img_signIn"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:layout_alignEnd="@+id/img_signIn"/>
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_line"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/rl2"
+        android:textStyle="bold"
+        android:layout_marginTop="70dp"
+        android:textSize="15dp"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/txt_SignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create a new account? Sign Up"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/rl2"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        android:textSize="15dp"
+        android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>
