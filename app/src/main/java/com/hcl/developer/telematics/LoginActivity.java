@@ -54,6 +54,21 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        activityMainBinding.txtSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerActivity = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registerActivity);
+            }
+        });
+
+        activityMainBinding.txtForget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgotActivity = new Intent(LoginActivity.this, ForgotActivity.class);
+                startActivity(forgotActivity);
+            }
+        });
 
     }
 
