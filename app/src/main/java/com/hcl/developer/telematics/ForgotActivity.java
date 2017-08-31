@@ -35,12 +35,13 @@ public class ForgotActivity extends BaseActivity {
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                         //Log.d("test", response.body().getStatus().toString());
                         if (response.body() != null) {
+
                             if (response.body().getStatus().toString().equals("Success")) {
+                                Toast.makeText(ForgotActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                                 Intent mainActivity = new Intent(ForgotActivity.this, MainActivity.class);
                                 startActivity(mainActivity);
                             }
                         } else {
-                            Toast.makeText(ForgotActivity.this, "Invalid User name", Toast.LENGTH_LONG).show();
                         }
                     }
 

@@ -37,6 +37,7 @@ public class LoginActivity extends BaseActivity {
                         //Log.d("test", response.body().getStatus().toString());
                         if (response.body() != null) {
                             if (response.body().getStatus().toString().equals("Success")) {
+                                Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                                 Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(mainActivity);
                             }
