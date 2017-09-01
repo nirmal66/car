@@ -17,44 +17,58 @@ import retrofit2.Response;
 
 public class ForgotActivity extends BaseActivity {
 
-
+    ActivityForgetPasswordBinding activityForgotPasswordBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ActivityForgetPasswordBinding activityForgotPasswordBinding = DataBindingUtil.setContentView(
+          activityForgotPasswordBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_forget_password);
 
         activityForgotPasswordBinding.txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login login = new Login(activityForgotPasswordBinding.edtUsername.getText().toString(), activityForgotPasswordBinding.edtConfirmPassword.getText().toString(), "admin");
-                Call<LoginResponse> call = apiService.getReset(login);
-                call.enqueue(new Callback<LoginResponse>() {
-                    @Override
-                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        //Log.d("test", response.body().getStatus().toString());
-                        if (response.body() != null) {
+                Boolean validate = Validation();
+                if (validate) {
+                    Login login = new Login(activityForgotPasswordBinding.edtUsername.getText().toString(), activityForgotPasswordBinding.edtConfirmPassword.getText().toString(), "admin");
+                    Call<LoginResponse> call = apiService.getReset(login);
+                    call.enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            //Log.d("test", response.body().getStatus().toString());
+                            if (response.body() != null) {
 
-                            if (response.body().getStatus().toString().equals("Success")) {
-                                Toast.makeText(ForgotActivity.this, "Login Success", Toast.LENGTH_LONG).show();
-                                Intent mainActivity = new Intent(ForgotActivity.this, MainActivity.class);
-                                startActivity(mainActivity);
+                                if (response.body().getStatus().toString().equals("Success")) {
+                                    Toast.makeText(ForgotActivity.this, "Login Success", Toast.LENGTH_LONG).show();
+                                    Intent mainActivity = new Intent(ForgotActivity.this, MainActivity.class);
+                                    startActivity(mainActivity);
+                                }
+                            } else {
                             }
-                        } else {
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
 
+                }
             }
         });
 
     }
-
+    public boolean Validation() {
+        if (activityForgotPasswordBinding.edtUsername.getText().length() == 0 || activityForgotPasswordBinding.edtConfirmPassword.getText().length() == 0) {
+            if (activityForgotPasswordBinding.edtUsername.getText().length() == 0) {
+                activityForgotPasswordBinding.edtUsername.setError("Enter valid email");
+            } else {
+                activityForgotPasswordBinding.edtConfirmPassword.setError("Enter your password");
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

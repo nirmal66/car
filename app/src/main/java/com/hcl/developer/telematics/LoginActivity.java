@@ -17,41 +17,43 @@ import retrofit2.Response;
 
 public class LoginActivity extends BaseActivity {
 
-
+     ActivityLoginBinding activityMainBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ActivityLoginBinding activityMainBinding = DataBindingUtil.setContentView(
+         activityMainBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_login);
 
         activityMainBinding.imgSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Login login = new Login(activityMainBinding.username.getText().toString(), activityMainBinding.password.getText().toString(), "admin");
-                Call<LoginResponse> call = apiService.getLogin(login);
-                call.enqueue(new Callback<LoginResponse>() {
-                    @Override
-                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        //Log.d("test", response.body().getStatus().toString());
-                        if (response.body() != null) {
-                            if (response.body().getStatus().toString().equals("Success")) {
-                                Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
-                                Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(mainActivity);
+                Boolean validate = Validation();
+                if (validate) {
+                    Login login = new Login(activityMainBinding.username.getText().toString(), activityMainBinding.password.getText().toString(), "admin");
+                    Call<LoginResponse> call = apiService.getLogin(login);
+                    call.enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            //Log.d("test", response.body().getStatus().toString());
+                            if (response.body() != null) {
+                                if (response.body().getStatus().toString().equals("Success")) {
+                                    Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
+                                    Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(mainActivity);
+                                }
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Invalid User name", Toast.LENGTH_LONG).show();
                             }
-                        } else {
-                                Toast.makeText(LoginActivity.this,"Invalid User name",Toast.LENGTH_LONG).show();
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
 
+                }
             }
         });
 
@@ -71,6 +73,20 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+    }
+
+
+    public boolean Validation() {
+        if (activityMainBinding.username.getText().length() == 0 || activityMainBinding.password.getText().length() == 0) {
+            if (activityMainBinding.username.getText().length() == 0) {
+                activityMainBinding.username.setError("Enter valid email");
+            } else {
+                activityMainBinding.password.setError("Enter your password");
+            }
+            return false;
+        } else {
+            return true;
+        }
     }
 
 

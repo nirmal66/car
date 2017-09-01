@@ -16,35 +16,52 @@ import retrofit2.Response;
 
 public class RegisterActivity extends BaseActivity {
 
+    ActivityRegisterBinding activityRegisterBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ActivityRegisterBinding activityRegisterBinding = DataBindingUtil.setContentView(
+         activityRegisterBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_register);
 
         activityRegisterBinding.txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegisterRequest register = new RegisterRequest(activityRegisterBinding.edtFirstName.getText().toString(),activityRegisterBinding.lastName.getText().toString(),activityRegisterBinding.lastName.getText().toString(),activityRegisterBinding.lastName.getText().toString(),activityRegisterBinding.lastName.getText().toString(),activityRegisterBinding.edtContactNumber.getText().toString(),activityRegisterBinding.edtUsername.getText().toString(),activityRegisterBinding.edtPassword.getText().toString());
-                Call<LoginResponse> call = apiService.getRegister(register);
-                call.enqueue(new Callback<LoginResponse>() {
-                    @Override
-                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        if (response.body().getStatus().toString().equals("Success")) {
-                            Intent mainActivity = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(mainActivity);
+                Boolean validate = Validation();
+                if (validate) {
+                    RegisterRequest register = new RegisterRequest(activityRegisterBinding.edtFirstName.getText().toString(), activityRegisterBinding.lastName.getText().toString(), activityRegisterBinding.edtDob.getText().toString(), activityRegisterBinding.edtLicence.getText().toString(), activityRegisterBinding.edtAddress.getText().toString(), activityRegisterBinding.edtContactNumber.getText().toString(), activityRegisterBinding.edtUsername.getText().toString(), activityRegisterBinding.edtPassword.getText().toString());
+                    Call<LoginResponse> call = apiService.getRegister(register);
+                    call.enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            if (response.body().getStatus().toString().equals("Success")) {
+                                Intent mainActivity = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(mainActivity);
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+                }
             }
         });
 
+    }
+
+    public boolean Validation() {
+        if (activityRegisterBinding.edtUsername.getText().length() == 0 || activityRegisterBinding.edtPassword.getText().length() == 0) {
+            if (activityRegisterBinding.edtUsername.getText().length() == 0) {
+                activityRegisterBinding.edtUsername.setError("Enter your Username");
+            } else {
+                activityRegisterBinding.edtPassword.setError("Enter your password");
+            }
+            return false;
+        } else {
+            return true;
+        }
     }
 }
