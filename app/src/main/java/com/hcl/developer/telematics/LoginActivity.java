@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.hcl.developer.telematics.Model.Login;
 import com.hcl.developer.telematics.Model.LoginResponse;
+import com.hcl.developer.telematics.SessionManager.SessionManager;
 import com.hcl.developer.telematics.Utilities.BaseActivity;
 import com.hcl.developer.telematics.databinding.ActivityLoginBinding;
 
@@ -17,13 +18,23 @@ import retrofit2.Response;
 
 public class LoginActivity extends BaseActivity {
 
-     ActivityLoginBinding activityMainBinding;
+    ActivityLoginBinding activityMainBinding;
+    private SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         activityMainBinding = DataBindingUtil.setContentView(
+        activityMainBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_login);
+
+        sessionManager = new SessionManager(getApplicationContext());
+
+        sessionManager = new SessionManager(getApplicationContext());
+        if (sessionManager.CheckLogin()) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
 
         activityMainBinding.imgSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,9 +49,11 @@ public class LoginActivity extends BaseActivity {
                             //Log.d("test", response.body().getStatus().toString());
                             if (response.body() != null) {
                                 if (response.body().getStatus().toString().equals("Success")) {
+                                    sessionManager.Login(activityMainBinding.username.getText().toString(), activityMainBinding.password.getText().toString());
                                     Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                                     Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(mainActivity);
+                                    finish();
                                 }
                             } else {
                                 Toast.makeText(LoginActivity.this, "Invalid User name", Toast.LENGTH_LONG).show();
@@ -62,6 +75,7 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent registerActivity = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(registerActivity);
+                finish();
             }
         });
 
@@ -70,6 +84,7 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent forgotActivity = new Intent(LoginActivity.this, ForgotActivity.class);
                 startActivity(forgotActivity);
+                finish();
             }
         });
 

@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.hcl.developer.telematics.Model.LoginResponse;
 import com.hcl.developer.telematics.Model.RegisterRequest;
+import com.hcl.developer.telematics.SessionManager.SessionManager;
 import com.hcl.developer.telematics.Utilities.BaseActivity;
 import com.hcl.developer.telematics.databinding.ActivityRegisterBinding;
 
@@ -17,13 +18,15 @@ import retrofit2.Response;
 public class RegisterActivity extends BaseActivity {
 
     ActivityRegisterBinding activityRegisterBinding;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         activityRegisterBinding = DataBindingUtil.setContentView(
+        activityRegisterBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_register);
+        sessionManager = new SessionManager(getApplicationContext());
 
         activityRegisterBinding.txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +39,7 @@ public class RegisterActivity extends BaseActivity {
                         @Override
                         public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                             if (response.body().getStatus().toString().equals("Success")) {
+                                sessionManager.Login(activityRegisterBinding.edtUsername.getText().toString(), activityRegisterBinding.edtPassword.getText().toString());
                                 Intent mainActivity = new Intent(RegisterActivity.this, MainActivity.class);
                                 startActivity(mainActivity);
                             }

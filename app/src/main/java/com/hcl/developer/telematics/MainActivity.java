@@ -10,11 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-import com.hcl.developer.telematics.Fragment.MapFragment;
+import com.hcl.developer.telematics.Fragment.HomeOwnerFragment;
+import com.hcl.developer.telematics.SessionManager.SessionManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private SessionManager sessionManager;
+    private TextView emailHeader;
 
 
     //AIzaSyAOq1JmfkBU6iOB2Uy147lfBvR_cxOTuwc
@@ -25,6 +31,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        sessionManager = new SessionManager(getApplicationContext());
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -33,8 +41,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        fragment(new MapFragment(), "MapFragment");
+        View hview = navigationView.getHeaderView(0);
+        emailHeader = (TextView)hview.findViewById(R.id.userName);
+        emailHeader.setText(sessionManager.getUsername());
+        fragment(new HomeOwnerFragment(), "HomeFragment");
 
     }
 

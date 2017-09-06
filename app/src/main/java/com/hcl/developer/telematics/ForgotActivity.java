@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.hcl.developer.telematics.Model.Login;
 import com.hcl.developer.telematics.Model.LoginResponse;
+import com.hcl.developer.telematics.SessionManager.SessionManager;
 import com.hcl.developer.telematics.Utilities.BaseActivity;
 import com.hcl.developer.telematics.databinding.ActivityForgetPasswordBinding;
 
@@ -18,12 +19,15 @@ import retrofit2.Response;
 public class ForgotActivity extends BaseActivity {
 
     ActivityForgetPasswordBinding activityForgotPasswordBinding;
+    private SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-          activityForgotPasswordBinding = DataBindingUtil.setContentView(
+        activityForgotPasswordBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_forget_password);
+        sessionManager = new SessionManager(getApplicationContext());
 
         activityForgotPasswordBinding.txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +43,7 @@ public class ForgotActivity extends BaseActivity {
                             if (response.body() != null) {
 
                                 if (response.body().getStatus().toString().equals("Success")) {
+                                    sessionManager.Login(activityForgotPasswordBinding.edtUsername.getText().toString(), activityForgotPasswordBinding.edtConfirmPassword.getText().toString());
                                     Toast.makeText(ForgotActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                                     Intent mainActivity = new Intent(ForgotActivity.this, MainActivity.class);
                                     startActivity(mainActivity);
@@ -58,6 +63,7 @@ public class ForgotActivity extends BaseActivity {
         });
 
     }
+
     public boolean Validation() {
         if (activityForgotPasswordBinding.edtUsername.getText().length() == 0 || activityForgotPasswordBinding.edtConfirmPassword.getText().length() == 0) {
             if (activityForgotPasswordBinding.edtUsername.getText().length() == 0) {
