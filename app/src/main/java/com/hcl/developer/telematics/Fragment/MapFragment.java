@@ -41,7 +41,7 @@ public class MapFragment extends BaseFragment {
         //fused location service will help to get the last known loaction
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
-
+        //https://stackoverflow.com/a/19354359/1835764
         mapView = (MapView) view.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
 
