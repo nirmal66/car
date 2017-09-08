@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hcl.developer.telematics.Adapter.OwnerAdapter;
+import com.hcl.developer.telematics.Adapter.OwnerHistoryAdapter;
 import com.hcl.developer.telematics.Model.RecentCarRequest;
 import com.hcl.developer.telematics.R;
 import com.hcl.developer.telematics.Utilities.BaseFragment;
@@ -16,7 +16,7 @@ import com.hcl.developer.telematics.Utilities.BaseFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeOwnerFragment extends BaseFragment
+public class HistoryOwnerFragment extends BaseFragment
 {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -26,14 +26,14 @@ public class HomeOwnerFragment extends BaseFragment
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-      return inflater.inflate(R.layout.fragment_home_owner, container, false);
+      return inflater.inflate(R.layout.fragment_history_owner, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         preparenotificationData();
-        mAdapter = new OwnerAdapter(recentLists);
+        mAdapter = new OwnerHistoryAdapter(recentLists);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view_app);
         // use this setting to improve performance if you know that changes

@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.hcl.developer.telematics.Fragment.HomeOwnerFragment;
+import com.hcl.developer.telematics.Fragment.OwnerFragment;
 import com.hcl.developer.telematics.SessionManager.SessionManager;
 
 public class MainActivity extends AppCompatActivity
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         View hview = navigationView.getHeaderView(0);
         emailHeader = (TextView)hview.findViewById(R.id.userName);
         emailHeader.setText(sessionManager.getUsername());
-        fragment(new HomeOwnerFragment(), "HomeFragment");
+        fragment(new OwnerFragment(), "HomeFragment");
 
     }
 

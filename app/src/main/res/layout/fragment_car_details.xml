@@ -1,0 +1,252 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
+
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="fill_parent"
+        android:layout_height="4000dp"
+        android:layout_margin="4dp">
+
+
+        <ImageView
+            android:id="@+id/user_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/left_img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/user_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/left_img" />
+
+        <ImageView
+            android:id="@+id/car_img1"
+            android:layout_width="220dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/user_img"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/left_img"
+            android:background="@drawable/car_image" />
+
+        <ImageView
+            android:id="@+id/right_img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/user_img"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@+id/car_img1"
+            android:background="@drawable/right_copy" />
+
+
+        <ImageView
+            android:id="@+id/car_regist_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/left_img"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/car_registr" />
+
+        <TextView
+            android:id="@+id/txt_RegistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/left_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="90dp"
+            android:layout_toRightOf="@+id/car_regist_img"
+            android:text="Car Registration Number"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_RegisterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/left_img"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="90dp"
+            android:layout_toRightOf="@+id/txt_RegistName"
+            android:text="TN 11 P 5905"
+            android:background="@android:color/holo_orange_dark"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/car_health_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/car_regist_img"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/car_health" />
+
+        <TextView
+            android:id="@+id/txt_carHealth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/car_regist_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/car_health_img"
+            android:text="Car Health"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_carHealth1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/car_regist_img"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/txt_carHealth"
+            android:text="                                          90%"
+            android:background="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/car_trip_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/car_health_img"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/totaltripp_img" />
+
+        <TextView
+            android:id="@+id/txt_trip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/car_health_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/car_trip_img"
+            android:text="Total Trip"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_trip1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/car_health_img"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/txt_trip"
+            android:text="                               300 Milles"
+            android:background="@android:color/holo_red_light"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/car_mile_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/car_trip_img"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/car_milege" />
+
+        <TextView
+            android:id="@+id/txt_mileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/car_trip_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/car_mile_img"
+            android:text="Mileage"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_mileage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/car_trip_img"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/txt_mileage"
+            android:text="                                   15 Km/L"
+            android:background="@android:color/holo_purple"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/car_lastservi_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/car_mile_img"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/car_last_service" />
+
+        <TextView
+            android:id="@+id/txt_last_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/car_mile_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/car_lastservi_img"
+            android:text="Last Service"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_last_service1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/car_mile_img"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/txt_last_service"
+            android:text="              20, Aug 2017"
+            android:background="@android:color/holo_blue_light"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/btn_add_newcar"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/car_lastservi_img"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_add_new_car" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
