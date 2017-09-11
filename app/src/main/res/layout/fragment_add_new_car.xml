@@ -14,15 +14,14 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/border">
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="ADD NEW CAR"
                 android:textColor="@android:color/white"
                 android:textSize="18dp"
@@ -34,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv1"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="User Name"
                 android:textColor="@android:color/white"
                 android:textSize="13dp" />
@@ -47,7 +46,7 @@
                 android:layout_below="@+id/tv1"
                 android:layout_marginLeft="55dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="12dp"
                 android:layout_toRightOf="@+id/txt_userName"
                 android:background="@drawable/edit_text_bottom_border"
                 android:textColor="@android:color/white" />
@@ -247,21 +246,31 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:checked="false"
-                    android:layout_marginLeft="20dp"
-                    android:text=" Owner"
+                    android:layout_marginLeft="10dp"
+                    android:text=" XUV"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="10dp" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="20dp"
-                    android:checked="false"
-                    android:text=" User"
+                    android:layout_marginLeft="5dp"
+                    android:checked="true"
+                    android:text=" SEDAN"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="10dp" />
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:checked="false"
+                    android:text=" HATCHBACK"
+                    android:textColor="@android:color/white"
+                    android:textSize="10dp" />
 
             </RadioGroup>
 
@@ -271,11 +280,11 @@
 
                 <Button
                    android:id="@+id/txt_Submit"
-                   android:layout_width="300dp"
-                   android:layout_height="50dp"
+                   android:layout_width="280dp"
+                   android:layout_height="40dp"
                    android:layout_below="@+id/radioGroup"
                    android:layout_centerInParent="true"
-                   android:layout_marginTop="40dp"
+                   android:layout_marginTop="10dp"
                    android:background="@drawable/border"
                    android:text="SUBMIT"
                    android:textColor="@android:color/white"

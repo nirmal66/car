@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hcl.developer.telematics.Fragment.HistoryOwnerFragment;
+import com.hcl.developer.telematics.Fragment.HistoryUserFragment;
 import com.hcl.developer.telematics.Fragment.OwnerFragment;
 import com.hcl.developer.telematics.SessionManager.SessionManager;
 
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         emailHeader.setText(sessionManager.getUsername());
 
         if (userInfo.equals("User")) {
-            fragment(new HistoryOwnerFragment(), "UserHomeFragment");
+            fragment(new HistoryUserFragment(), "UserHomeFragment");
         } else {
             fragment(new OwnerFragment(), "HomeFragment");
         }
