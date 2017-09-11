@@ -91,7 +91,7 @@
             </ImageView>
 
             <RadioGroup
-                android:id="@+id/radioGroup"
+                android:id="@+id/userInfo"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/password"
@@ -101,23 +101,23 @@
 
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/owner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:checked="false"
-                    android:text="  Owner"
+                    android:text="Owner"
                     android:textColor="@android:color/white"
                     android:textSize="18dp" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="20dp"
                     android:checked="false"
-                    android:text="  User"
+                    android:text="User"
                     android:textColor="@android:color/white"
                     android:textSize="18dp" />
 
@@ -127,7 +127,7 @@
                 android:id="@+id/img_signIn"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@+id/radioGroup"
+                android:layout_below="@+id/userInfo"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/sign_in">
 

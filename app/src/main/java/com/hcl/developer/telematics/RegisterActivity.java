@@ -39,7 +39,7 @@ public class RegisterActivity extends BaseActivity {
                         @Override
                         public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                             if (response.body().getStatus().toString().equals("Success")) {
-                                sessionManager.Login(activityRegisterBinding.edtUsername.getText().toString(), activityRegisterBinding.edtPassword.getText().toString());
+                                sessionManager.Login(activityRegisterBinding.edtUsername.getText().toString(), activityRegisterBinding.edtPassword.getText().toString(),"User");
                                 Intent mainActivity = new Intent(RegisterActivity.this, MainActivity.class);
                                 startActivity(mainActivity);
                             }

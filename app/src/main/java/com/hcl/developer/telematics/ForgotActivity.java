@@ -43,7 +43,7 @@ public class ForgotActivity extends BaseActivity {
                             if (response.body() != null) {
 
                                 if (response.body().getStatus().toString().equals("Success")) {
-                                    sessionManager.Login(activityForgotPasswordBinding.edtUsername.getText().toString(), activityForgotPasswordBinding.edtConfirmPassword.getText().toString());
+                                    sessionManager.Login(activityForgotPasswordBinding.edtUsername.getText().toString(), activityForgotPasswordBinding.edtConfirmPassword.getText().toString(),"User");
                                     Toast.makeText(ForgotActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                                     Intent mainActivity = new Intent(ForgotActivity.this, MainActivity.class);
                                     startActivity(mainActivity);

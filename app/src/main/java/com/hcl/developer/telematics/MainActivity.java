@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hcl.developer.telematics.Fragment.HistoryOwnerFragment;
 import com.hcl.developer.telematics.Fragment.OwnerFragment;
 import com.hcl.developer.telematics.SessionManager.SessionManager;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity
 
     private SessionManager sessionManager;
     private TextView emailHeader;
-
+    private String userInfo;
 
     //AIzaSyAOq1JmfkBU6iOB2Uy147lfBvR_cxOTuwc
     @Override
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         sessionManager = new SessionManager(getApplicationContext());
-
+        userInfo = getIntent().getStringExtra("userInfo");
+        userInfo = sessionManager.getRole();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -41,10 +43,16 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
         View hview = navigationView.getHeaderView(0);
-        emailHeader = (TextView)hview.findViewById(R.id.userName);
+        emailHeader = (TextView) hview.findViewById(R.id.userName);
         emailHeader.setText(sessionManager.getUsername());
-        fragment(new OwnerFragment(), "HomeFragment");
+
+        if (userInfo.equals("User")) {
+            fragment(new HistoryOwnerFragment(), "UserHomeFragment");
+        } else {
+            fragment(new OwnerFragment(), "HomeFragment");
+        }
 
     }
 
@@ -85,23 +93,23 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
+        int id = item.getItemId();
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_out) {
+            sessionManager.logoutUser();
+            finish();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 

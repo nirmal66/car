@@ -18,8 +18,9 @@ import retrofit2.Response;
 
 public class LoginActivity extends BaseActivity {
 
-    ActivityLoginBinding activityMainBinding;
+    private ActivityLoginBinding activityMainBinding;
     private SessionManager sessionManager;
+    private String userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,20 @@ public class LoginActivity extends BaseActivity {
             finish();
         }
 
+        activityMainBinding.user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userInfo = activityMainBinding.user.getText().toString();
+            }
+        });
+
+        activityMainBinding.owner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userInfo = activityMainBinding.owner.getText().toString();
+            }
+        });
+
         activityMainBinding.imgSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,9 +64,10 @@ public class LoginActivity extends BaseActivity {
                             //Log.d("test", response.body().getStatus().toString());
                             if (response.body() != null) {
                                 if (response.body().getStatus().toString().equals("Success")) {
-                                    sessionManager.Login(activityMainBinding.username.getText().toString(), activityMainBinding.password.getText().toString());
+                                    sessionManager.Login(activityMainBinding.username.getText().toString(), activityMainBinding.password.getText().toString(),userInfo);
                                     Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                                     Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                                    mainActivity.putExtra("userInfo",userInfo);
                                     startActivity(mainActivity);
                                     finish();
                                 }
