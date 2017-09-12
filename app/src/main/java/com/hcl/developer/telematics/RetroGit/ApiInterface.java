@@ -1,5 +1,6 @@
 package com.hcl.developer.telematics.RetroGit;
 
+import com.hcl.developer.telematics.Model.CarRegister;
 import com.hcl.developer.telematics.Model.Login;
 import com.hcl.developer.telematics.Model.LoginResponse;
 import com.hcl.developer.telematics.Model.RegisterRequest;
@@ -23,5 +24,8 @@ public interface ApiInterface {
 
     @POST("reset")
     Call<LoginResponse> getReset(@Body Login loginRequest);
+
+    @POST("carregistration")
+    Call<LoginResponse> getCarRegister(@Body CarRegister carRegister);
 
 }

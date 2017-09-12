@@ -18,6 +18,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -67,10 +68,10 @@ public class MapFragment extends BaseFragment {
                     ActivityCompat.requestPermissions(getActivity(),
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                             PERMISSION_REQUEST_CODE);
-                    callPlaceDetectionApi();
 
                 } else {
                     callPlaceDetectionApi();
+                    displayMap();
                 }
 
             }
@@ -96,6 +97,22 @@ public class MapFragment extends BaseFragment {
                         }
                     }
                 });
+    }
+
+
+    private void displayMap()
+    {
+
+
+        myLocation = new LatLng(12.9056533,80.2192789);
+        mMap.addMarker(new MarkerOptions().position(myLocation)
+                .title("TN 11X 8223")
+        .icon(BitmapDescriptorFactory.fromResource(R.drawable.carmarker)));
+
+        myLocation = new LatLng(12.906653,80.2270189);
+        mMap.addMarker(new MarkerOptions().position(myLocation)
+                .title("TN 12X 8333")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.carmarker)));
     }
 
     @Override

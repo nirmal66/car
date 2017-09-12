@@ -1,7 +1,6 @@
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/login_bg">
@@ -28,28 +27,28 @@
                 android:textStyle="bold" />
 
 
-           <!-- <TextView
-                android:id="@+id/txt_userName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv1"
-                android:layout_marginTop="20dp"
-                android:text="User Name"
-                android:textColor="@android:color/white"
-                android:textSize="13dp" />
+            <!-- <TextView
+                 android:id="@+id/txt_userName"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/tv1"
+                 android:layout_marginTop="20dp"
+                 android:text="User Name"
+                 android:textColor="@android:color/white"
+                 android:textSize="13dp" />
 
 
-            <EditText
-                android:id="@+id/edt_userName"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv1"
-                android:layout_marginLeft="55dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="12dp"
-                android:layout_toRightOf="@+id/txt_userName"
-                android:background="@drawable/edit_text_bottom_border"
-                android:textColor="@android:color/white" />-->
+             <EditText
+                 android:id="@+id/edt_userName"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/tv1"
+                 android:layout_marginLeft="55dp"
+                 android:layout_marginRight="10dp"
+                 android:layout_marginTop="12dp"
+                 android:layout_toRightOf="@+id/txt_userName"
+                 android:background="@drawable/edit_text_bottom_border"
+                 android:textColor="@android:color/white" />-->
 
 
             <TextView
@@ -76,9 +75,7 @@
                 android:textColor="@android:color/white" />
 
 
-
-
-           <TextView
+            <TextView
                 android:id="@+id/txt_LastService_Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,63 +98,63 @@
                 android:background="@drawable/edit_text_bottom_border"
                 android:textColor="@android:color/white" />
 
-              <TextView
-                 android:id="@+id/txt_Fare_Per_Mile"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@+id/txt_LastService_Date"
-                 android:layout_marginTop="30dp"
-                 android:text="Fare Per Mile "
-                 android:textColor="@android:color/white"
-                 android:textSize="13dp" />
+            <TextView
+                android:id="@+id/txt_Fare_Per_Mile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_LastService_Date"
+                android:layout_marginTop="30dp"
+                android:text="Fare Per Mile "
+                android:textColor="@android:color/white"
+                android:textSize="13dp" />
 
 
-             <EditText
-                 android:id="@+id/edt_Fare_Per_Mile"
-                 android:layout_width="fill_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@+id/edt_LastService_Date"
-                 android:layout_marginLeft="40dp"
-                 android:layout_marginRight="10dp"
-                 android:layout_marginTop="24dp"
-                 android:layout_toRightOf="@+id/txt_Fare_Per_Mile"
-                 android:background="@drawable/edit_text_bottom_border"
-                 android:inputType="textEmailAddress"
-                 android:textColor="@android:color/white" />
+            <EditText
+                android:id="@+id/edt_Fare_Per_Mile"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_LastService_Date"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_toRightOf="@+id/txt_Fare_Per_Mile"
+                android:background="@drawable/edit_text_bottom_border"
+                android:inputType="textEmailAddress"
+                android:textColor="@android:color/white" />
 
             <TextView
-                  android:id="@+id/txt_Car_Image"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_below="@+id/txt_Fare_Per_Mile"
-                  android:layout_marginTop="30dp"
-                  android:text="Car Image "
-                  android:textColor="@android:color/white"
-                  android:textSize="13dp" />
+                android:id="@+id/txt_Car_Image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_Fare_Per_Mile"
+                android:layout_marginTop="30dp"
+                android:text="Car Image "
+                android:textColor="@android:color/white"
+                android:textSize="13dp" />
 
 
-              <EditText
-                  android:id="@+id/edt_Car_Image"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_below="@+id/edt_Fare_Per_Mile"
-                  android:layout_marginLeft="60dp"
-                  android:layout_marginRight="10dp"
-                  android:layout_marginTop="24dp"
-                  android:layout_toRightOf="@+id/txt_Car_Image"
-                  android:background="@drawable/edit_text_bottom_border"
-                  android:inputType="textPassword"
-                  android:textColor="@android:color/white" />
+            <EditText
+                android:id="@+id/edt_Car_Image"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_Fare_Per_Mile"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_toRightOf="@+id/txt_Car_Image"
+                android:background="@drawable/edit_text_bottom_border"
+                android:inputType="textPassword"
+                android:textColor="@android:color/white" />
 
-                <TextView
-                   android:id="@+id/txt_Car_Type"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_below="@+id/txt_Car_Image"
-                   android:layout_marginTop="30dp"
-                   android:text="Car Type "
-                   android:textColor="@android:color/white"
-                   android:textSize="13dp" />
+            <TextView
+                android:id="@+id/txt_Car_Type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_Car_Image"
+                android:layout_marginTop="30dp"
+                android:text="Car Type "
+                android:textColor="@android:color/white"
+                android:textSize="13dp" />
 
 
             <RadioGroup
@@ -165,10 +162,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/edt_Car_Image"
-                android:layout_toRightOf="@+id/txt_Car_Type"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="24dp"
+                android:layout_toRightOf="@+id/txt_Car_Type"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
@@ -178,8 +175,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:checked="false"
                     android:layout_marginLeft="10dp"
+                    android:checked="false"
                     android:text=" XUV"
                     android:textColor="@android:color/white"
                     android:textSize="10dp" />
@@ -194,6 +191,7 @@
                     android:text=" SEDAN"
                     android:textColor="@android:color/white"
                     android:textSize="10dp" />
+
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="wrap_content"
@@ -208,25 +206,22 @@
             </RadioGroup>
 
 
-
-
-
-                <Button
-                   android:id="@+id/txt_Submit"
-                   android:layout_width="280dp"
-                   android:layout_height="40dp"
-                   android:layout_below="@+id/radioGroup"
-                   android:layout_centerInParent="true"
-                   android:layout_marginTop="10dp"
-                   android:background="@drawable/border"
-                   android:text="SUBMIT"
-                   android:textColor="@android:color/white"
-                   android:textSize="18dp"
-                   android:textStyle="bold" />
-
+            <Button
+                android:id="@+id/txt_Submit"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/radioGroup"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border"
+                android:text="SUBMIT"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
 
 
     </RelativeLayout>
+</layout>
