@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.hcl.developer.telematics.Adapter.OwnerHistoryAdapter;
+import com.hcl.developer.telematics.MainActivity;
 import com.hcl.developer.telematics.Model.RecentCarRequest;
 import com.hcl.developer.telematics.R;
 import com.hcl.developer.telematics.Utilities.BaseFragment;
@@ -22,6 +24,7 @@ public class HistoryUserFragment extends BaseFragment
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<RecentCarRequest> recentLists = new ArrayList<>();
+    private Button carRequest;
 
     @Nullable
     @Override
@@ -43,6 +46,15 @@ public class HistoryUserFragment extends BaseFragment
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        carRequest = (Button)view.findViewById(R.id.carRequest);
+        carRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).fragment(new MapFragment(),"Map Fragment");
+
+            }
+        });
 
     }
     private void preparenotificationData() {

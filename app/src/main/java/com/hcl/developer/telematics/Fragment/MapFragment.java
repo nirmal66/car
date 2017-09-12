@@ -1,8 +1,12 @@
 package com.hcl.developer.telematics.Fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +31,7 @@ public class MapFragment extends BaseFragment {
     private LatLng myLocation;
     private GoogleMap mMap;
     private MapView mapView;
+    private static final int PERMISSION_REQUEST_CODE = 100;
 
     //AIzaSyAOq1JmfkBU6iOB2Uy147lfBvR_cxOTuwc
     @Nullable
@@ -56,8 +61,17 @@ public class MapFragment extends BaseFragment {
             @Override
             public void onMapReady(GoogleMap Map) {
                 mMap = Map;
+                if (ContextCompat.checkSelfPermission(getActivity(),
+                        Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            PERMISSION_REQUEST_CODE);
+                    callPlaceDetectionApi();
 
-                callPlaceDetectionApi();
+                } else {
+                    callPlaceDetectionApi();
+                }
 
             }
         });
