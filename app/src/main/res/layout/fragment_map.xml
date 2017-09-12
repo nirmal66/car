@@ -1,11 +1,183 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
 
-    <com.google.android.gms.maps.MapView android:id="@+id/mapview"
+    <RelativeLayout
+        android:id="@+id/rl1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="4000dp">
 
-</LinearLayout>
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapview"
+            android:layout_width="fill_parent"
+            android:layout_height="370dp" />
+
+
+        <TextView
+            android:id="@+id/txt_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapview"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="From"
+            android:textColor="@android:color/white"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/edt_from"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapview"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/txt_from"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/txt_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapview"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/edt_from"
+            android:text="To"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_to"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapview"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/txt_to"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/txt_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_from"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Date"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/edt_date"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_from"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/txt_date"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/txt_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_to"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/edt_date"
+            android:text="Time"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_to"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/txt_time"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/txt_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_date"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Type"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+        <Spinner
+            android:id="@+id/spin_type"
+            android:layout_width="110dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/edt_date"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/txt_type"
+            android:background="@drawable/dropdown"/>
+
+        <TextView
+            android:id="@+id/txt_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_time"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/spin_type"
+            android:text="Hours"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spin_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/edt_time"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/txt_hours"
+            android:background="@drawable/dropdown" />
+
+        <Button
+            android:id="@+id/txt_Submit"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/txt_type"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/border1"
+            android:text="SET UP MY RIDE"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
