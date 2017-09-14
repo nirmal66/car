@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -22,8 +24,20 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.gson.Gson;
+import com.hcl.developer.telematics.MainActivity;
+import com.hcl.developer.telematics.Model.CarRequest;
+import com.hcl.developer.telematics.Model.CarResponseLocation;
 import com.hcl.developer.telematics.R;
+import com.hcl.developer.telematics.SessionManager.SessionManager;
 import com.hcl.developer.telematics.Utilities.BaseFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MapFragment extends BaseFragment {
 
@@ -33,6 +47,9 @@ public class MapFragment extends BaseFragment {
     private GoogleMap mMap;
     private MapView mapView;
     private static final int PERMISSION_REQUEST_CODE = 100;
+    private SessionManager sessionManager;
+    private List<CarResponseLocation> carResponse = new ArrayList<>();
+    private Button myRide;
 
     //AIzaSyAOq1JmfkBU6iOB2Uy147lfBvR_cxOTuwc
     @Nullable
@@ -71,9 +88,16 @@ public class MapFragment extends BaseFragment {
 
                 } else {
                     callPlaceDetectionApi();
-                    displayMap();
                 }
 
+            }
+        });
+
+        myRide = (Button)view.findViewById(R.id.txt_Submit);
+        myRide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).fragment(new CarDetailListFragment(),"CarDetailsList");
             }
         });
 
@@ -88,7 +112,7 @@ public class MapFragment extends BaseFragment {
                         if (location != null) {
                             lat = location.getLatitude();
                             lon = location.getLongitude();
-
+                            sendLatLon(lat, lon);
                             myLocation = new LatLng(lat, lon);
                             mMap.addMarker(new MarkerOptions().position(myLocation)
                                     .title("My Location"));
@@ -99,20 +123,34 @@ public class MapFragment extends BaseFragment {
                 });
     }
 
+    private void sendLatLon(double lat, double lon) {
+        sessionManager = new SessionManager(getActivity());
+        CarRequest carRequest = new CarRequest(sessionManager.getUsername(), lat, lon);
+        Call<List<CarResponseLocation>> call = apiService.getCarLocation(carRequest);
+        call.enqueue(new Callback<List<CarResponseLocation>>() {
+            @Override
+            public void onResponse(Call<List<CarResponseLocation>> call, Response<List<CarResponseLocation>> response) {
+                Gson gson = new Gson();
+                Log.d("test", gson.toJson(response.body()).toString());
+                carResponse = response.body();
+                displayMap();
 
-    private void displayMap()
-    {
+            }
 
+            @Override
+            public void onFailure(Call<List<CarResponseLocation>> call, Throwable t) {
 
-        myLocation = new LatLng(12.9056533,80.2192789);
-        mMap.addMarker(new MarkerOptions().position(myLocation)
-                .title("TN 11X 8223")
-        .icon(BitmapDescriptorFactory.fromResource(R.drawable.carmarker)));
+            }
+        });
+    }
 
-        myLocation = new LatLng(12.906653,80.2270189);
-        mMap.addMarker(new MarkerOptions().position(myLocation)
-                .title("TN 12X 8333")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.carmarker)));
+    private void displayMap() {
+        for (int i = 0; i < carResponse.size(); i++) {
+            myLocation = new LatLng(carResponse.get(i).getLatitudeValue(), carResponse.get(i).getLatitudeValue());
+            mMap.addMarker(new MarkerOptions().position(myLocation)
+                    .title(carResponse.get(i).getcarRegistrationNumber())
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.carmarker)));
+        }
     }
 
     @Override

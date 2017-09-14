@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity
     private SessionManager sessionManager;
     private TextView emailHeader;
     private String userInfo;
-
     //AIzaSyAOq1JmfkBU6iOB2Uy147lfBvR_cxOTuwc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
